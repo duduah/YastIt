@@ -15,5 +15,6 @@
     <string name="image_photo_dish">Foto del plato</string>
     <string name="no_dishes_message">Esta mesa no ha pedido nada aún.</string>
     <string name="dish_photo_content_description">Dish photo</string>
+    <string name="hint_text_variantes">Introduzca las variaciones que el cliente solicite de este plato</string>
 
 </resources>

@@ -1,14 +1,29 @@
 package es.diegogs.yastit.activity
 
+import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import es.diegogs.yastit.R
 import es.diegogs.yastit.model.AllergenTypes
 import es.diegogs.yastit.model.Dish
+import es.diegogs.yastit.model.Dishes
 import kotlinx.android.synthetic.main.activity_dish.*
 
 class DishActivity : AppCompatActivity() {
+
+    companion object {
+
+        val EXTRA_DISH = "EXTRA_DISH"
+
+        fun intent(context: Context, dishIndex: Int): Intent {
+            val dishIntent = Intent(context, DishActivity::class.java)
+            dishIntent.putExtra(EXTRA_DISH, dishIndex)
+
+            return dishIntent
+        }
+    }
 
     var dish: Dish? = null
     set(value) {
@@ -29,10 +44,13 @@ class DishActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_dish)
 
-        dish = Dish(name = "Sartén de guisantes, trigueros y champiñones",
-                description = "Quisantes frescos salteados en mantequilla junto con unos espárragos trigueros de la huerta y unos champiñones de monte. Se deja al comensal salpimentar al gusto.",
-                price = 15.50f,
-                photo = R.drawable.sarten_guisantes_trigueros)
+        val dishIndex = intent.getIntExtra(EXTRA_DISH, 0)
+        dish = Dishes[dishIndex]
+
+//        dish = Dish(name = "Sartén de guisantes, trigueros y champiñones",
+//                description = "Quisantes frescos salteados en mantequilla junto con unos espárragos trigueros de la huerta y unos champiñones de monte. Se deja al comensal salpimentar al gusto.",
+//                price = 15.50f,
+//                photo = R.drawable.sarten_guisantes_trigueros)
 
     }
 
@@ -40,11 +58,9 @@ class DishActivity : AppCompatActivity() {
         val allergens = dish?.getAllergens()
 
         if (allergens?.size == 0) {
-            label_allergen.visibility = View.GONE
             linear_layout_allergens.visibility = View.GONE
         }
         else {
-            label_allergen.visibility = View.VISIBLE
             linear_layout_allergens.visibility = View.VISIBLE
 
             icon_allergen_cacahuete.visibility = View.GONE

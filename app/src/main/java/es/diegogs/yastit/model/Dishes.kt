@@ -2,7 +2,7 @@ package es.diegogs.yastit.model
 
 import es.diegogs.yastit.R
 
-class Dishes {
+object Dishes {
     private val dishes: List<Dish> = listOf(
             Dish(name = "Sartén de guisantes, trigueros y champiñones",
                     description = "Quisantes frescos salteados en mantequilla junto con unos espárragos trigueros de la huerta y unos champiñones de monte. Se deja al comensal salpimentar al gusto.",
@@ -55,4 +55,11 @@ class Dishes {
     fun getDish(id: String) = dishes.find { dish ->
         dish.dishId == id
     }
+
+    /**
+     * Overloading get operator
+     */
+    operator fun get(index: Int) = dishes[index]
+    
+    fun toArray() = dishes.toTypedArray()
 }

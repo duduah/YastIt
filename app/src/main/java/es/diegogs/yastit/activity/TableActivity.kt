@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
+import android.widget.Toast
 import es.diegogs.yastit.R
 import es.diegogs.yastit.adapter.DishRecyclerViewAdapter
 import es.diegogs.yastit.fragment.TableListFragment
@@ -27,16 +28,16 @@ class TableActivity : AppCompatActivity() {
         }
     }
 
-    var dishes: MutableList<Dish> = mutableListOf<Dish>()
+    private var dishes: MutableList<Dish> = mutableListOf<Dish>()
     set(value) {
         field = value
         if (value != null) {
 
             val adapter = DishRecyclerViewAdapter(value)
             table_dishes_list.adapter = adapter
-            adapter.onClickListener = View.OnClickListener {
-
-            }
+//            adapter.onClickListener = View.OnClickListener {
+//
+//            }
         }
     }
 
@@ -57,6 +58,12 @@ class TableActivity : AppCompatActivity() {
         else {
             label_message_no_dishes.visibility = View.GONE
             table_dishes_list.visibility = View.VISIBLE
+        }
+
+        add_button.setOnClickListener {
+            val intent = MenuActivity.intent(this, tableIndex)
+
+            startActivity(intent)
         }
     }
 }

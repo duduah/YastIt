@@ -2,4 +2,5 @@
 <resources>
     <dimen name="allergen_icon_width">40dp</dimen>
     <dimen name="allergen_icon_height">55dp</dimen>
+    <dimen name="general_padding">16dp</dimen>
 </resources>
