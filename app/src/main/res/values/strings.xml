@@ -10,4 +10,10 @@
     <string name="icon_egg_content_description">Icono de alérgeno: huevo</string>
     <string name="icon_fish_content_description">Icono de alérgeno: pescado</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="image_photo_dish">Foto del plato</string>
+    <string name="no_dishes_message">Esta mesa no ha pedido nada aún.</string>
+    <string name="dish_photo_content_description">Dish photo</string>
+
 </resources>

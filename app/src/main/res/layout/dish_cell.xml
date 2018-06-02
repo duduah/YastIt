@@ -1,0 +1,128 @@
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    android:layout_margin="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/dish_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/image_photo_dish"
+            android:src="@drawable/pasta_mejorana"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignBottom="@+id/photo"
+            android:orientation="vertical"
+            android:layout_alignTop="@+id/photo">
+
+            <TextView
+                android:id="@+id/label_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorBackgroundFloating"
+                android:textSize="18sp"
+                tools:text="Nombre del plato bastante largo" />
+
+            <TextView
+                android:id="@+id/label_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorBackgroundFloating"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="99.99€" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_allergen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignBottom="@+id/photo">
+
+            <ImageView
+                android:id="@+id/icon_alergeno_cacahuete"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/allergen_icon_height"
+                android:layout_weight="1"
+                android:src="@drawable/icon_alergeno_cacahuete"
+                android:contentDescription="@string/icon_peanut_content_description"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/icon_alergeno_frutos_cascara"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/allergen_icon_height"
+                android:layout_weight="1"
+                android:src="@drawable/icon_alergeno_frutos_cascara"
+                android:contentDescription="@string/icon_shellfruit_content_description"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/icon_alergeno_gluten"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/allergen_icon_height"
+                android:layout_weight="1"
+                android:src="@drawable/icon_alergeno_gluten"
+                android:contentDescription="@string/icon_gluten_content_description"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/icon_alergeno_granos_sesamo"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/allergen_icon_height"
+                android:layout_weight="1"
+                android:src="@drawable/icon_alergeno_granos_sesamo"
+                android:contentDescription="@string/icon_sesame_content_description"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/icon_alergeno_huevo"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/allergen_icon_height"
+                android:layout_weight="1"
+                android:src="@drawable/icon_alergeno_huevo"
+                android:contentDescription="@string/icon_egg_content_description"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/icon_alergeno_pescado"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/allergen_icon_height"
+                android:layout_weight="1"
+                android:src="@drawable/icon_alergenos_pescado"
+                android:contentDescription="@string/icon_fish_content_description"
+                android:visibility="visible" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

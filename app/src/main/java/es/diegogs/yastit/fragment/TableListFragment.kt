@@ -1,5 +1,7 @@
 package es.diegogs.yastit.fragment
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +19,8 @@ class TableListFragment: Fragment() {
     companion object {
         fun newInstance() = TableListFragment()
     }
+
+    private var onTableCliskListener: OnTableCliskListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,5 +41,37 @@ class TableListFragment: Fragment() {
                 android.R.layout.simple_list_item_1,
                 Tables.toArray()
         )
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+
+        runOnAttach(context as Activity)
+    }
+
+    override fun onAttach(activity: Activity?) {
+        super.onAttach(activity)
+
+        runOnAttach(activity)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+
+        onTableCliskListener = null
+    }
+
+    private fun runOnAttach(activity: Activity?) {
+        if (activity is OnTableCliskListener) {
+            onTableCliskListener = activity
+        }
+        else {
+            onTableCliskListener = null
+        }
+    }
+
+    interface OnTableCliskListener {
+        // TODO: ver si es necesario el rimer parámetro
+        fun onTableSelected(table: Table, position: Int)
     }
 }

@@ -3,6 +3,8 @@ package es.diegogs.yastit.model
 data class Table (
         val tableNumber: Int,
         private var dishes: MutableList<Dish> = mutableListOf<Dish>()) {
+    // TODO: Ver cómo metemos las variantes que pida el cliente
+
 
     fun addDish(newDish: Dish) {
         dishes.add(newDish)
