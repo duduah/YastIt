@@ -11,9 +11,14 @@ import es.diegogs.yastit.model.Dish
 
 class DishRecyclerViewAdapter(private val dishes: List<Dish>): RecyclerView.Adapter<DishRecyclerViewAdapter.DishViewHolder>() {
 
+    var onClickListener: View.OnClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.dish_cell, parent, false)
 
+        view.setOnClickListener {
+            onClickListener?.onClick(it)
+        }
         return DishViewHolder(view)
     }
 

@@ -22,10 +22,6 @@ class TableListFragment: Fragment() {
 
     private var onTableCliskListener: OnTableCliskListener? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -41,6 +37,10 @@ class TableListFragment: Fragment() {
                 android.R.layout.simple_list_item_1,
                 Tables.toArray()
         )
+
+        table_list.setOnItemClickListener { _, _, position, _ ->
+            onTableCliskListener?.onTableSelected(Tables[position], position)
+        }
     }
 
     override fun onAttach(context: Context?) {

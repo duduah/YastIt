@@ -32,8 +32,11 @@ class TableActivity : AppCompatActivity() {
         field = value
         if (value != null) {
 
-            table_dishes_list.adapter = DishRecyclerViewAdapter(value)
+            val adapter = DishRecyclerViewAdapter(value)
+            table_dishes_list.adapter = adapter
+            adapter.onClickListener = View.OnClickListener {
 
+            }
         }
     }
 

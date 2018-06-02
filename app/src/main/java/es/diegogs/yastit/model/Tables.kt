@@ -9,6 +9,8 @@ object Tables {
 
     private fun getTables(): List<Table> {
 
+        // TODO: quitar datos de prueba
+
         val tables: List<Table> = (1..10).map {
             Table(it)
         }
@@ -35,6 +37,12 @@ object Tables {
 
         return tables
     }
+
+    /**
+     * Overloading get operator
+     */
+    operator fun get(index: Int) = tables[index]
+
 
     fun getTablesCount() = tables.size
 
