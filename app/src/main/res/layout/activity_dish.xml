@@ -80,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/label_price" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linear_layout_allergens"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -94,51 +94,57 @@
         app:layout_constraintTop_toBottomOf="@+id/label_allergen">
 
         <ImageView
-            android:id="@+id/icon_allergen_01"
+            android:id="@+id/icon_allergen_cacahuete"
             android:layout_width="0dp"
             android:layout_height="@dimen/allergen_icon_height"
             android:layout_weight="1"
             android:src="@drawable/icon_alergeno_cacahuete"
+            android:contentDescription="@string/icon_peanut_content_description"
             android:visibility="visible" />
 
         <ImageView
-            android:id="@+id/icon_allergen_02"
+            android:id="@+id/icon_allergen_frutos_cascara"
             android:layout_width="0dp"
             android:layout_height="@dimen/allergen_icon_height"
             android:layout_weight="1"
             android:src="@drawable/icon_alergeno_frutos_cascara"
+            android:contentDescription="@string/icon_shellfruit_content_description"
             android:visibility="visible"/>
 
         <ImageView
-            android:id="@+id/icon_allergen_03"
+            android:id="@+id/icon_allergen_gluten"
             android:layout_width="0dp"
             android:layout_height="@dimen/allergen_icon_height"
             android:layout_weight="1"
             android:src="@drawable/icon_alergeno_gluten"
+            android:contentDescription="@string/icon_gluten_content_description"
             android:visibility="visible"/>
 
         <ImageView
-            android:id="@+id/icon_allergen_04"
+            android:id="@+id/icon_allergen_sesamo"
             android:layout_width="0dp"
             android:layout_height="@dimen/allergen_icon_height"
             android:layout_weight="1"
             android:src="@drawable/icon_alergeno_granos_sesamo"
+            android:contentDescription="@string/icon_sesame_content_description"
             android:visibility="visible"/>
 
         <ImageView
-            android:id="@+id/icon_allergen_05"
+            android:id="@+id/icon_allergen_huevo"
             android:layout_width="0dp"
             android:layout_height="@dimen/allergen_icon_height"
             android:layout_weight="1"
             android:src="@drawable/icon_alergeno_huevo"
+            android:contentDescription="@string/icon_egg_content_description"
             android:visibility="visible"/>
 
         <ImageView
-            android:id="@+id/icon_allergen_06"
+            android:id="@+id/icon_allergen_pescado"
             android:layout_width="0dp"
             android:layout_height="@dimen/allergen_icon_height"
             android:layout_weight="1"
             android:src="@drawable/icon_alergenos_pescado"
+            android:contentDescription="@string/icon_fish_content_description"
             android:visibility="visible"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
