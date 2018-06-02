@@ -8,9 +8,24 @@ data class Table (
         dishes.add(newDish)
     }
 
+    fun removeDish(index: Int) {
+        dishes.removeAt(index)
+    }
+
     fun getDishesCount() = dishes.size
 
     fun getDishes() = dishes
 
     fun getDish(index: Int) = dishes.get(index)
+
+    fun getBillFromTable(): Float {
+        var billTotal = 0f
+        for (dish in dishes) {
+            billTotal += dish.price
+        }
+
+        return billTotal
+    }
+
+    override fun toString() = tableNumber.toString()
 }

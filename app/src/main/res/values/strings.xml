@@ -2,10 +2,12 @@
     <string name="app_name">YastIt</string>
     <string name="allergens">Alérgenos</string>
     <string name="price_format">%.2f €</string>
-    <string name="icon_peanut_content_description">Allergen peanut icon</string>
-    <string name="icon_shellfruit_content_description">Allergen shellfruit icon</string>
-    <string name="icon_gluten_content_description">Allergen gluten icon</string>
-    <string name="icon_sesame_content_description">Allergen sesame icon</string>
-    <string name="icon_egg_content_description">Allergen egg icon</string>
-    <string name="icon_fish_content_description">Allergen fish icon</string>
+    <string name="table_name_format">Mesa %d</string>
+    <string name="icon_peanut_content_description">Icono de alérgeno: cacahuete</string>
+    <string name="icon_shellfruit_content_description">Icono de alérgeno: frutos de cáscara</string>
+    <string name="icon_gluten_content_description">Icono de alérgeno: gluten</string>
+    <string name="icon_sesame_content_description">Icono de alérgeno: sésamo</string>
+    <string name="icon_egg_content_description">Icono de alérgeno: huevo</string>
+    <string name="icon_fish_content_description">Icono de alérgeno: pescado</string>
+
 </resources>

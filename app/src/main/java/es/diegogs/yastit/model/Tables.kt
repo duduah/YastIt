@@ -15,14 +15,7 @@ object Tables {
 
     fun getDishesFromTable(tableNumber: Int) = tables[tableNumber].getDishes()
 
-    fun getBillFromTable(tableNumber: Int): Float {
-        val dishes = getDishesFromTable(tableNumber)
-        var billTotal: Float = 0f
-        for (dish in dishes) {
-            billTotal += dish.price
-        }
+    fun getBillFromTable(tableNumber: Int) =  tables[tableNumber].getBillFromTable()
 
-        return billTotal
-    }
-
+    fun toArray() = tables.toTypedArray()
 }
