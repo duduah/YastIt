@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DishActivity">
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/pasta_mejorana"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Dish photo"/>
+
+    <TextView
+        android:id="@+id/label_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photo"
+        tools:text="Nombre del plato bastante largo" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.777"
+        tools:text="Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. " />
+
+    <TextView
+        android:id="@+id/label_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_name"
+        tools:text="99.99€" />
+
+    <TextView
+        android:id="@+id/label_allergen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/allergens"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_price" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_allergen">
+
+        <ImageView
+            android:id="@+id/icon_allergen_01"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/allergen_icon_height"
+            android:layout_weight="1"
+            android:src="@drawable/icon_alergeno_cacahuete"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/icon_allergen_02"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/allergen_icon_height"
+            android:layout_weight="1"
+            android:src="@drawable/icon_alergeno_frutos_cascara"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:id="@+id/icon_allergen_03"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/allergen_icon_height"
+            android:layout_weight="1"
+            android:src="@drawable/icon_alergeno_gluten"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:id="@+id/icon_allergen_04"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/allergen_icon_height"
+            android:layout_weight="1"
+            android:src="@drawable/icon_alergeno_granos_sesamo"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:id="@+id/icon_allergen_05"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/allergen_icon_height"
+            android:layout_weight="1"
+            android:src="@drawable/icon_alergeno_huevo"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:id="@+id/icon_allergen_06"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/allergen_icon_height"
+            android:layout_weight="1"
+            android:src="@drawable/icon_alergenos_pescado"
+            android:visibility="visible"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
