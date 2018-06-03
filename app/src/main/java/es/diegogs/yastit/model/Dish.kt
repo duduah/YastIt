@@ -18,7 +18,8 @@ data class Dish(val dishId: String = UUID.randomUUID().toString(),
                 val description: String,
                 val price: Float,
                 val photo: Int,
-                private val allergens: List<AllergenTypes> = listOf()) {
+                private val allergens: List<AllergenTypes> = listOf(),
+                var variantes: String? = "") {
 
     fun getAllergenCount() = allergens.size
 

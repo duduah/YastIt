@@ -10,10 +10,8 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import es.diegogs.yastit.R
 import es.diegogs.yastit.adapter.DishRecyclerViewAdapter
-import es.diegogs.yastit.fragment.TableListFragment
 import es.diegogs.yastit.model.Dish
 import es.diegogs.yastit.model.Dishes
 import es.diegogs.yastit.model.Table
@@ -35,17 +33,17 @@ class TableActivity : AppCompatActivity() {
     }
 
     val REQUEST_NEW_DISH = 1
+    val REQUEST_EDIT_DISH = 2
 
     private var dishes: MutableList<Dish> = mutableListOf<Dish>()
     set(value) {
         field = value
         if (value != null) {
 
-            val adapter = DishRecyclerViewAdapter(value)
-            table_dishes_list.adapter = adapter
-//            adapter.onClickListener = View.OnClickListener {
-//
-//            }
+//            val adapter = DishRecyclerViewAdapter(value)
+//            table_dishes_list.adapter = adapter
+            setDishAdapter(value)
+
         }
     }
 
@@ -86,9 +84,9 @@ class TableActivity : AppCompatActivity() {
 
         when (requestCode) {
             REQUEST_NEW_DISH -> {
-                if (requestCode.equals(REQUEST_NEW_DISH) && resultCode == Activity.RESULT_OK) {
+                if (resultCode == Activity.RESULT_OK && data != null) {
 
-                    val result = data?.getStringExtra(DishActivity.EXTRA_DISH_ID)
+                    val result = data.getStringExtra(DishActivity.EXTRA_NEW_DISH_ID)
 
                     if (result != null && !result.isEmpty()) {
 
@@ -97,6 +95,22 @@ class TableActivity : AppCompatActivity() {
                         updateViews()
                         /*this.onRestart()*/
                     }
+                }
+            }
+            REQUEST_EDIT_DISH -> {
+
+                if (resultCode == Activity.RESULT_OK && data != null) {
+
+                    val dishIndex = data.getIntExtra(DishActivity.EXTRA_DISH, 0)
+                    val newVariants = data.getSerializableExtra(DishActivity.EXTRA_CHANGE_VARIANTS).toString()
+
+/*                    if (dishIndex != null
+                            && newVariants != null
+                            && !newVariants.isEmpty()) {*/
+
+                        table?.setDishVariants(dishIndex, newVariants)
+                        /*this.onRestart()*/
+//                    }
                 }
             }
         }
@@ -138,5 +152,19 @@ class TableActivity : AppCompatActivity() {
             label_message_no_dishes.visibility = View.GONE
             table_dishes_list.visibility = View.VISIBLE
         }
+    }
+
+    fun setDishAdapter(dishes: List<Dish>) {
+        val adapter = DishRecyclerViewAdapter(dishes)
+        table_dishes_list.adapter = adapter
+
+        adapter.onClickListener = View.OnClickListener {
+
+
+            val dishIndex = table_dishes_list.getChildAdapterPosition(it)
+
+            startActivityForResult(DishActivity.intent(this, dishIndex, tableIndex, false), REQUEST_EDIT_DISH)
+        }
+
     }
 }

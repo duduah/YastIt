@@ -22,6 +22,10 @@ data class Table (
 
     fun getDish(index: Int) = dishes.get(index)
 
+    fun setDishVariants(dishIndex: Int, variants: String) {
+        getDish(dishIndex).variantes = variants
+    }
+
     fun getBillFromTable(): Float {
         var billTotal = 0f
         for (dish in dishes) {
