@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DishActivity">
+
+    <TextView
+        android:id="@+id/dish_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/dish_photo_content_description"
+        android:src="@drawable/pasta_mejorana"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/label_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="?android:attr/colorBackgroundFloating"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/photo"
+        tools:text="Nombre del plato bastante largo" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_allergens"
+        tools:text="Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. Lorem ipsum dolor est. " />
+
+    <TextView
+        android:id="@+id/label_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="?android:attr/colorBackgroundFloating"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_name"
+        tools:text="99.99€" />
+
+    <LinearLayout
+        android:id="@+id/linear_layout_allergens"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photo"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/icon_allergen_cacahuete"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/allergen_icon_height"
+            android:layout_weight="1"
+            android:contentDescription="@string/icon_peanut_content_description"
+            android:src="@drawable/icon_alergeno_cacahuete"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/icon_allergen_frutos_cascara"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/allergen_icon_height"
+            android:layout_weight="1"
+            android:contentDescription="@string/icon_shellfruit_content_description"
+            android:src="@drawable/icon_alergeno_frutos_cascara"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/icon_allergen_gluten"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/allergen_icon_height"
+            android:layout_weight="1"
+            android:contentDescription="@string/icon_gluten_content_description"
+            android:src="@drawable/icon_alergeno_gluten"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/icon_allergen_sesamo"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/allergen_icon_height"
+            android:layout_weight="1"
+            android:contentDescription="@string/icon_sesame_content_description"
+            android:src="@drawable/icon_alergeno_granos_sesamo"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/icon_allergen_huevo"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/allergen_icon_height"
+            android:layout_weight="1"
+            android:contentDescription="@string/icon_egg_content_description"
+            android:src="@drawable/icon_alergeno_huevo"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/icon_allergen_pescado"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/allergen_icon_height"
+            android:layout_weight="1"
+            android:contentDescription="@string/icon_fish_content_description"
+            android:src="@drawable/icon_alergenos_pescado"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

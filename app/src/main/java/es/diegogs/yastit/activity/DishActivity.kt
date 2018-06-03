@@ -1,5 +1,6 @@
 package es.diegogs.yastit.activity
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -9,17 +10,21 @@ import es.diegogs.yastit.R
 import es.diegogs.yastit.model.AllergenTypes
 import es.diegogs.yastit.model.Dish
 import es.diegogs.yastit.model.Dishes
+import es.diegogs.yastit.model.Tables
 import kotlinx.android.synthetic.main.activity_dish.*
+import kotlinx.android.synthetic.main.content_dish.*
 
 class DishActivity : AppCompatActivity() {
 
     companion object {
 
         val EXTRA_DISH = "EXTRA_DISH"
+        val EXTRA_TABLE = "EXTRA_TABLE"
 
-        fun intent(context: Context, dishIndex: Int): Intent {
+        fun intent(context: Context, dishIndex: Int, tableIndex: Int): Intent {
             val dishIntent = Intent(context, DishActivity::class.java)
             dishIntent.putExtra(EXTRA_DISH, dishIndex)
+            dishIntent.putExtra(EXTRA_TABLE, tableIndex)
 
             return dishIntent
         }
@@ -44,23 +49,37 @@ class DishActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_dish)
 
+
+        val table = Tables[intent.getIntExtra(EXTRA_TABLE, 0)]
         val dishIndex = intent.getIntExtra(EXTRA_DISH, 0)
         dish = Dishes[dishIndex]
 
-//        dish = Dish(name = "Sartén de guisantes, trigueros y champiñones",
-//                description = "Quisantes frescos salteados en mantequilla junto con unos espárragos trigueros de la huerta y unos champiñones de monte. Se deja al comensal salpimentar al gusto.",
-//                price = 15.50f,
-//                photo = R.drawable.sarten_guisantes_trigueros)
+        ok_button.setOnClickListener {
+
+            table.addDish(dish)
+
+            setResult(Activity.RESULT_OK)
+            finish()
+        }
+
+        cancel_button.setOnClickListener {
+
+            setResult(Activity.RESULT_CANCELED)
+            finish()
+        }
 
     }
+
 
     fun displayAllergetIcons() {
         val allergens = dish?.getAllergens()
 
         if (allergens?.size == 0) {
+
             linear_layout_allergens.visibility = View.GONE
         }
         else {
+
             linear_layout_allergens.visibility = View.VISIBLE
 
             icon_allergen_cacahuete.visibility = View.GONE

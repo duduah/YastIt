@@ -6,8 +6,10 @@ data class Table (
     // TODO: Ver cómo metemos las variantes que pida el cliente
 
 
-    fun addDish(newDish: Dish) {
-        dishes.add(newDish)
+    fun addDish(newDish: Dish?) {
+        if (newDish != null) {
+            dishes.add(newDish)
+        }
     }
 
     fun removeDish(index: Int) {
