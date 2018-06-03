@@ -19,12 +19,12 @@ class MenuActivity : AppCompatActivity() {
 
     companion object {
 
-        val EXTRA_MENU = "EXTRA_MENU"
+        val EXTRA_TABLE_MENU = "EXTRA_MENU"
 
         fun intent(context: Context, tableIndex: Int): Intent {
 
             val menuIntent = Intent(context, MenuActivity::class.java)
-            menuIntent.putExtra(EXTRA_MENU, tableIndex)
+            menuIntent.putExtra(EXTRA_TABLE_MENU, tableIndex)
 
             return menuIntent
         }
@@ -33,16 +33,11 @@ class MenuActivity : AppCompatActivity() {
     private var dishes = listOf<Dish>()
         set(value) {
             field = value
-            if (value != null) {
 
-                val adapter = DishRecyclerViewAdapter(value)
-                table_dishes_list.adapter = adapter
+            setDishAdapter(value)
 
-                updateViews()
-//            adapter.onClickListener = View.OnClickListener {
-//
-//            }
-            }
+            updateViews()
+
         }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,5 +76,27 @@ class MenuActivity : AppCompatActivity() {
             label_message_no_dishes.visibility = View.GONE
             table_dishes_list.visibility = View.VISIBLE
         }
+    }
+
+    fun setDishAdapter(dishes: List<Dish>) {
+        val adapter = DishRecyclerViewAdapter(dishes)
+        table_dishes_list.adapter = adapter
+
+        adapter.onClickListener = View.OnClickListener {
+
+
+            val dishIndex = table_dishes_list.getChildAdapterPosition(it)
+            val tableIndex = intent.getIntExtra(EXTRA_TABLE_MENU, 0)
+
+            if (intent.extras.containsKey(EXTRA_TABLE_MENU)) {
+                startActivity(DishActivity.intent(this, dishIndex, tableIndex, true)
+                        .addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT))
+                finish()
+            }
+            else {
+                startActivity(DishActivity.intent(this, dishIndex))
+            }
+        }
+
     }
 }

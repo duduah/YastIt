@@ -38,13 +38,9 @@ class TableActivity : AppCompatActivity() {
     private var dishes: MutableList<Dish> = mutableListOf<Dish>()
     set(value) {
         field = value
-        if (value != null) {
 
-//            val adapter = DishRecyclerViewAdapter(value)
-//            table_dishes_list.adapter = adapter
-            setDishAdapter(value)
+        setDishAdapter(value)
 
-        }
     }
 
     private var table: Table? = null
@@ -86,15 +82,15 @@ class TableActivity : AppCompatActivity() {
             REQUEST_NEW_DISH -> {
                 if (resultCode == Activity.RESULT_OK && data != null) {
 
-                    val result = data.getStringExtra(DishActivity.EXTRA_NEW_DISH_ID)
+                    val dishId = data.getSerializableExtra(DishActivity.EXTRA_NEW_DISH_ID).toString()
+                    val newVariants = data.getSerializableExtra(DishActivity.EXTRA_CHANGE_VARIANTS).toString()
 
-                    if (result != null && !result.isEmpty()) {
+                    table?.addDish(Dishes.getDish(dishId))
+                    table?.setDishVariants(dishId, newVariants)
+                    dishes = table?.getDishes()!!
+                    updateViews()
+                    /*this.onRestart()*/
 
-                        table?.addDish(Dishes.getDish(result))
-                        dishes = table?.getDishes()!!
-                        updateViews()
-                        /*this.onRestart()*/
-                    }
                 }
             }
             REQUEST_EDIT_DISH -> {

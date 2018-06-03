@@ -53,12 +53,8 @@ class DishActivity : AppCompatActivity() {
             description.text = value.description
             label_price.text = getString(R.string.price_format, value.price)
             if (editMode!!) {
-                text_variantes.setText(value.variantes)
-                /*text_variantes.editableText.replace(
-                        0,
-                        text_variantes.text.length - 1,
-                        value.variantes)*/
 
+                text_variantes.setText(value.variantes)
             }
 
             displayAllergetIcons(value.getAllergens())
@@ -73,7 +69,12 @@ class DishActivity : AppCompatActivity() {
 
         if (value != null) {
             table = Tables[value]
-            dish = table?.getDish(intent.getIntExtra(EXTRA_DISH, 0))
+            if (editMode!!) {
+                dish = table?.getDish(intent.getIntExtra(EXTRA_DISH, 0))
+            }
+            else {
+                dish = Dishes[intent.getIntExtra(EXTRA_DISH, 0)]
+            }
         }
     }
 
@@ -107,6 +108,7 @@ class DishActivity : AppCompatActivity() {
                 }
                 else {
                     result.putExtra(EXTRA_NEW_DISH_ID, dish?.dishId)
+                    result.putExtra(EXTRA_CHANGE_VARIANTS, text_variantes.text.toString())
                 }
                 setResult(Activity.RESULT_OK, result)
                 finish()

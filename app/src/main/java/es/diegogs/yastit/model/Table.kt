@@ -22,8 +22,16 @@ data class Table (
 
     fun getDish(index: Int) = dishes.get(index)
 
+    fun getDish(id: String) = dishes.find { dish ->
+        dish.dishId == id
+    }
+
     fun setDishVariants(dishIndex: Int, variants: String) {
         getDish(dishIndex).variantes = variants
+    }
+
+    fun setDishVariants(dishId: String, variants: String) {
+        getDish(dishId)?.variantes = variants
     }
 
     fun getBillFromTable(): Float {
