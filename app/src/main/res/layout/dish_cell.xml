@@ -71,11 +71,12 @@ TODO: volver a poner el CardView
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearlayout_allergen"
+            android:id="@+id/linear_layout_allergens"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_alignBottom="@+id/photo">
+            android:layout_alignBottom="@+id/photo"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/icon_alergeno_cacahuete"
@@ -84,7 +85,7 @@ TODO: volver a poner el CardView
                 android:layout_weight="1"
                 android:src="@drawable/icon_alergeno_cacahuete"
                 android:contentDescription="@string/icon_peanut_content_description"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/icon_alergeno_frutos_cascara"
@@ -93,7 +94,7 @@ TODO: volver a poner el CardView
                 android:layout_weight="1"
                 android:src="@drawable/icon_alergeno_frutos_cascara"
                 android:contentDescription="@string/icon_shellfruit_content_description"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/icon_alergeno_gluten"
@@ -102,7 +103,7 @@ TODO: volver a poner el CardView
                 android:layout_weight="1"
                 android:src="@drawable/icon_alergeno_gluten"
                 android:contentDescription="@string/icon_gluten_content_description"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/icon_alergeno_granos_sesamo"
@@ -111,7 +112,7 @@ TODO: volver a poner el CardView
                 android:layout_weight="1"
                 android:src="@drawable/icon_alergeno_granos_sesamo"
                 android:contentDescription="@string/icon_sesame_content_description"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/icon_alergeno_huevo"
@@ -120,7 +121,7 @@ TODO: volver a poner el CardView
                 android:layout_weight="1"
                 android:src="@drawable/icon_alergeno_huevo"
                 android:contentDescription="@string/icon_egg_content_description"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/icon_alergeno_pescado"
@@ -129,7 +130,7 @@ TODO: volver a poner el CardView
                 android:layout_weight="1"
                 android:src="@drawable/icon_alergenos_pescado"
                 android:contentDescription="@string/icon_fish_content_description"
-                android:visibility="visible" />
+                android:visibility="gone" />
         </LinearLayout>
 
     </RelativeLayout>

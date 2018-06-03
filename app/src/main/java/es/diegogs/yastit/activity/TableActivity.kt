@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import es.diegogs.yastit.R
@@ -41,6 +43,15 @@ class TableActivity : AppCompatActivity() {
         }
     }
 
+    private var tableIndex: Int? = 0
+    set(value) {
+        field = value
+
+        if (value != null) {
+            dishes = Tables.getDishesFromTable(value)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_table)
@@ -49,8 +60,8 @@ class TableActivity : AppCompatActivity() {
         table_dishes_list.layoutManager = GridLayoutManager(this, 1)
         table_dishes_list.itemAnimator = DefaultItemAnimator()
 
-        val tableIndex = intent.getIntExtra(EXTRA_TABLE, 0)
-        dishes = Tables.getDishesFromTable(tableIndex)
+        tableIndex = intent.getIntExtra(EXTRA_TABLE, 0)
+        //dishes = Tables.getDishesFromTable(tableIndex)
         if (dishes.size == 0) {
             label_message_no_dishes.visibility = View.VISIBLE
             table_dishes_list.visibility = View.GONE
@@ -61,9 +72,30 @@ class TableActivity : AppCompatActivity() {
         }
 
         add_button.setOnClickListener {
-            val intent = MenuActivity.intent(this, tableIndex)
+            val intent = MenuActivity.intent(this, tableIndex!!)
 
             startActivity(intent)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+
+        menuInflater.inflate(R.menu.activity_table, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        when(item?.itemId) {
+            R.id.menu_item_bill -> {
+                //val intent = BillActivity.intent(this, tableIndex!!)
+                startActivity(BillActivity.intent(this, tableIndex!!))
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

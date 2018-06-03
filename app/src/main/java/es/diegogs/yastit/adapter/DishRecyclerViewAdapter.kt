@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import es.diegogs.yastit.R
+import es.diegogs.yastit.model.AllergenTypes
 import es.diegogs.yastit.model.Dish
+import kotlinx.android.synthetic.main.content_dish.*
 
 class DishRecyclerViewAdapter(private val dishes: List<Dish>): RecyclerView.Adapter<DishRecyclerViewAdapter.DishViewHolder>() {
 
@@ -37,6 +40,9 @@ class DishRecyclerViewAdapter(private val dishes: List<Dish>): RecyclerView.Adap
         val dishPhoto = itemView.findViewById<ImageView?>(R.id.photo)
         val dishDescription = itemView.findViewById<TextView?>(R.id.description)
         val dishPrice = itemView.findViewById<TextView?>(R.id.label_price)
+        val dishAllergensContainer = itemView.findViewById<LinearLayout?>(R.id.linear_layout_allergens)
+
+
         // TODO: ver cómo hacemos los alérgenos
 
         fun bindDish(dish: Dish, position: Int) {
@@ -46,8 +52,28 @@ class DishRecyclerViewAdapter(private val dishes: List<Dish>): RecyclerView.Adap
             dishName?.text = dish.name
             dishPhoto?.setImageResource(dish.photo)
             dishDescription?.text = dish.description
-            dishPrice?.text = context.getString(R.string.price_format)
+            dishPrice?.text = context.getString(R.string.price_format, dish.price)
+
+            displayAllergetIcons(dish.getAllergens())
+
         }
 
+        fun displayAllergetIcons(allergens: List<AllergenTypes>) {
+
+            if (allergens.isEmpty()) {
+
+                dishAllergensContainer?.visibility = View.GONE
+            }
+            else {
+
+                dishAllergensContainer?.visibility = View.VISIBLE
+
+                allergens.forEach {
+                    itemView.findViewById<ImageView?>(it.allergenId)?.visibility = View.VISIBLE
+                }
+            }
+        }
     }
+
+
 }

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import es.diegogs.yastit.R
 import es.diegogs.yastit.model.AllergenTypes
 import es.diegogs.yastit.model.Dish
@@ -40,7 +41,7 @@ class DishActivity : AppCompatActivity() {
             description.text = value.description
             label_price.text = getString(R.string.price_format, value.price)
 
-            displayAllergetIcons()
+            displayAllergetIcons(value.getAllergens())
         }
     }
 
@@ -70,35 +71,49 @@ class DishActivity : AppCompatActivity() {
 
     }
 
+    fun displayAllergetIcons(allergens: List<AllergenTypes>) {
 
-    fun displayAllergetIcons() {
-        val allergens = dish?.getAllergens()
+        if (allergens.isEmpty()) {
 
-        if (allergens?.size == 0) {
-
-            linear_layout_allergens.visibility = View.GONE
+            linear_layout_allergens?.visibility = View.GONE
         }
         else {
 
-            linear_layout_allergens.visibility = View.VISIBLE
+            linear_layout_allergens?.visibility = View.VISIBLE
 
-            icon_allergen_cacahuete.visibility = View.GONE
-            icon_allergen_frutos_cascara.visibility = View.GONE
-            icon_allergen_gluten.visibility = View.GONE
-            icon_allergen_huevo.visibility = View.GONE
-            icon_allergen_pescado.visibility = View.GONE
-            icon_allergen_sesamo.visibility = View.GONE
-
-            allergens?.forEach {
-                when(it) {
-                    AllergenTypes.PEANUT -> icon_allergen_cacahuete.visibility = View.VISIBLE
-                    AllergenTypes.SHELLFRUIT -> icon_allergen_frutos_cascara.visibility = View.VISIBLE
-                    AllergenTypes.GLUTEN -> icon_allergen_gluten.visibility = View.VISIBLE
-                    AllergenTypes.EGG -> icon_allergen_huevo.visibility = View.VISIBLE
-                    AllergenTypes.FISH -> icon_allergen_pescado.visibility = View.VISIBLE
-                    AllergenTypes.SESAME -> icon_allergen_sesamo.visibility = View.VISIBLE
-                }
+            allergens.forEach {
+                findViewById<ImageView?>(it.allergenId)?.visibility = View.VISIBLE
             }
         }
     }
+
+//    fun displayAllergetIcons(allergens: List<AllergenTypes>) {
+//
+//        if (allergens?.size == 0) {
+//
+//            linear_layout_allergens.visibility = View.GONE
+//        }
+//        else {
+//
+//            linear_layout_allergens.visibility = View.VISIBLE
+//
+//            icon_allergen_cacahuete.visibility = View.GONE
+//            icon_allergen_frutos_cascara.visibility = View.GONE
+//            icon_allergen_gluten.visibility = View.GONE
+//            icon_allergen_huevo.visibility = View.GONE
+//            icon_allergen_pescado.visibility = View.GONE
+//            icon_allergen_sesamo.visibility = View.GONE
+//
+//            allergens?.forEach {
+//                when(it) {
+//                    AllergenTypes.PEANUT -> icon_allergen_cacahuete.visibility = View.VISIBLE
+//                    AllergenTypes.SHELLFRUIT -> icon_allergen_frutos_cascara.visibility = View.VISIBLE
+//                    AllergenTypes.GLUTEN -> icon_allergen_gluten.visibility = View.VISIBLE
+//                    AllergenTypes.EGG -> icon_allergen_huevo.visibility = View.VISIBLE
+//                    AllergenTypes.FISH -> icon_allergen_pescado.visibility = View.VISIBLE
+//                    AllergenTypes.SESAME -> icon_allergen_sesamo.visibility = View.VISIBLE
+//                }
+//            }
+//        }
+//    }
 }
