@@ -104,13 +104,8 @@ class TableActivity : AppCompatActivity() {
                     val dishIndex = data.getIntExtra(DishActivity.EXTRA_DISH, 0)
                     val newVariants = data.getSerializableExtra(DishActivity.EXTRA_CHANGE_VARIANTS).toString()
 
-/*                    if (dishIndex != null
-                            && newVariants != null
-                            && !newVariants.isEmpty()) {*/
-
-                        table?.setDishVariants(dishIndex, newVariants)
-                        /*this.onRestart()*/
-//                    }
+                    table?.setDishVariants(dishIndex, newVariants)
+                    /*this.onRestart()*/
                 }
             }
         }
