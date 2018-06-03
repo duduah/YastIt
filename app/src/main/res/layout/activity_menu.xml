@@ -7,9 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.MenuActivity">
 
-    <ListView
-        android:id="@+id/menu_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <include layout="@layout/dishes_recycler_view" />
 
 </FrameLayout>

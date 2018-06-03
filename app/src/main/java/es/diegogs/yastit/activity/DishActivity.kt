@@ -72,6 +72,7 @@ class DishActivity : AppCompatActivity() {
 
     }
 
+    // TODO: Ver cómo meter esta función en Utils para usarla también en el recycler
     fun displayAllergetIcons(allergens: List<AllergenTypes>) {
 
         if (allergens.isEmpty()) {
@@ -88,33 +89,4 @@ class DishActivity : AppCompatActivity() {
         }
     }
 
-//    fun displayAllergetIcons(allergens: List<AllergenTypes>) {
-//
-//        if (allergens?.size == 0) {
-//
-//            linear_layout_allergens.visibility = View.GONE
-//        }
-//        else {
-//
-//            linear_layout_allergens.visibility = View.VISIBLE
-//
-//            icon_allergen_cacahuete.visibility = View.GONE
-//            icon_allergen_frutos_cascara.visibility = View.GONE
-//            icon_allergen_gluten.visibility = View.GONE
-//            icon_allergen_huevo.visibility = View.GONE
-//            icon_allergen_pescado.visibility = View.GONE
-//            icon_allergen_sesamo.visibility = View.GONE
-//
-//            allergens?.forEach {
-//                when(it) {
-//                    AllergenTypes.PEANUT -> icon_allergen_cacahuete.visibility = View.VISIBLE
-//                    AllergenTypes.SHELLFRUIT -> icon_allergen_frutos_cascara.visibility = View.VISIBLE
-//                    AllergenTypes.GLUTEN -> icon_allergen_gluten.visibility = View.VISIBLE
-//                    AllergenTypes.EGG -> icon_allergen_huevo.visibility = View.VISIBLE
-//                    AllergenTypes.FISH -> icon_allergen_pescado.visibility = View.VISIBLE
-//                    AllergenTypes.SESAME -> icon_allergen_sesamo.visibility = View.VISIBLE
-//                }
-//            }
-//        }
-//    }
 }

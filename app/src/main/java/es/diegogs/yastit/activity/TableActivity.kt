@@ -19,6 +19,7 @@ import es.diegogs.yastit.model.Dishes
 import es.diegogs.yastit.model.Table
 import es.diegogs.yastit.model.Tables
 import kotlinx.android.synthetic.main.activity_table.*
+import kotlinx.android.synthetic.main.dishes_recycler_view.*
 
 class TableActivity : AppCompatActivity() {
 
