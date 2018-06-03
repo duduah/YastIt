@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.DishActivity" />
-        <activity android:name=".activity.TableActivity" />
+        <activity android:name=".activity.DishActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.TableActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.TablesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MenuActivity" />
-        <activity android:name=".activity.BillActivity"></activity>
+        <activity android:name=".activity.MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.BillActivity" />
     </application>
 
 </manifest>

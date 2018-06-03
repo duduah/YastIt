@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
+import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
 import es.diegogs.yastit.R
@@ -43,6 +44,10 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
+        // Indicamos la vista que actuará de toolbar. En nuestro caso: toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         // TODO: parametrizar el 1 en integers
         table_dishes_list.layoutManager = GridLayoutManager(this, 1)
         table_dishes_list.itemAnimator = DefaultItemAnimator()
@@ -65,6 +70,19 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }*/
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        when(item?.itemId) {
+            android.R.id.home -> {
+
+                finish()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     fun updateViews() {

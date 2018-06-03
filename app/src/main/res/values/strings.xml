@@ -3,6 +3,8 @@
     <string name="allergens">Alérgenos</string>
     <string name="price_format">%.2f €</string>
     <string name="table_name_format">Mesa %d</string>
+    <string name="title_add_new_dish">Plato del menú</string>
+    <string name="title_today_menu">Menú</string>
     <string name="icon_peanut_content_description">Icono de alérgeno: cacahuete</string>
     <string name="icon_shellfruit_content_description">Icono de alérgeno: frutos de cáscara</string>
     <string name="icon_gluten_content_description">Icono de alérgeno: gluten</string>

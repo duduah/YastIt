@@ -59,6 +59,10 @@ class TableActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_table)
 
+        // Indicamos la vista que actuará de toolbar. En nuestro caso: toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         // TODO: parametrizar el 1 en integers
         table_dishes_list.layoutManager = GridLayoutManager(this, 1)
         table_dishes_list.itemAnimator = DefaultItemAnimator()
@@ -129,12 +133,18 @@ class TableActivity : AppCompatActivity() {
                 startActivity(BillActivity.intent(this, tableIndex!!))
                 return true
             }
+            android.R.id.home -> {
+
+                finish()
+                return true
+            }
         }
 
         return super.onOptionsItemSelected(item)
     }
 
     fun updateViews() {
+        toolbar.title = getString(R.string.table_name_format, table?.tableNumber)
         if (dishes.size == 0) {
             label_message_no_dishes.visibility = View.VISIBLE
             table_dishes_list.visibility = View.GONE

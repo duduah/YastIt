@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import es.diegogs.yastit.R
@@ -81,8 +82,8 @@ class DishActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_dish)
+
 
         if (intent.extras.containsKey(EXTRA_TABLE)) {
             editMode = (intent.extras.containsKey(EXTRA_IS_NEW_DISH)
@@ -133,6 +134,7 @@ class DishActivity : AppCompatActivity() {
         }
 
     }
+
 
     // TODO: Ver cómo meter esta función en Utils para usarla también en el recycler
     fun displayAllergetIcons(allergens: List<AllergenTypes>) {
