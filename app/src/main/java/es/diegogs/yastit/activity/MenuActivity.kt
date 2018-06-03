@@ -36,11 +36,15 @@ class MenuActivity : AppCompatActivity() {
                 Dishes.toArray()
         )
 
-        val tableIndex = intent.getIntExtra(EXTRA_MENU, 0)
+        //val tableIndex = intent.getIntExtra(EXTRA_MENU, 0)
         menu_list.setOnItemClickListener { _, _, position, _ ->
 
-            val intent = DishActivity.intent(this, position, tableIndex)
+//            val intent = DishActivity.intent(this, position, tableIndex)
+            val intent = DishActivity.intent(this, position)
+            intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT)
             startActivity(intent)
+            finish()
         }
     }
+
 }

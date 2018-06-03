@@ -19,13 +19,14 @@ class DishActivity : AppCompatActivity() {
 
     companion object {
 
+        val EXTRA_DISH_ID = "EXTRA_DISH"
         val EXTRA_DISH = "EXTRA_DISH"
-        val EXTRA_TABLE = "EXTRA_TABLE"
+        //val EXTRA_TABLE = "EXTRA_TABLE"
 
-        fun intent(context: Context, dishIndex: Int, tableIndex: Int): Intent {
+        fun intent(context: Context, dishIndex: Int): Intent {
             val dishIntent = Intent(context, DishActivity::class.java)
             dishIntent.putExtra(EXTRA_DISH, dishIndex)
-            dishIntent.putExtra(EXTRA_TABLE, tableIndex)
+            //dishIntent.putExtra(EXTRA_TABLE, tableIndex)
 
             return dishIntent
         }
@@ -51,15 +52,15 @@ class DishActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dish)
 
 
-        val table = Tables[intent.getIntExtra(EXTRA_TABLE, 0)]
+        //val table = Tables[intent.getIntExtra(EXTRA_TABLE, 0)]
         val dishIndex = intent.getIntExtra(EXTRA_DISH, 0)
         dish = Dishes[dishIndex]
 
         ok_button.setOnClickListener {
 
-            table.addDish(dish)
-
-            setResult(Activity.RESULT_OK)
+            val result = Intent()
+            result.putExtra(EXTRA_DISH_ID, dish?.dishId)
+            setResult(Activity.RESULT_OK, result)
             finish()
         }
 

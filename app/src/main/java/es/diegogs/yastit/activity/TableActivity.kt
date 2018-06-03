@@ -1,5 +1,6 @@
 package es.diegogs.yastit.activity
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -14,6 +15,8 @@ import es.diegogs.yastit.R
 import es.diegogs.yastit.adapter.DishRecyclerViewAdapter
 import es.diegogs.yastit.fragment.TableListFragment
 import es.diegogs.yastit.model.Dish
+import es.diegogs.yastit.model.Dishes
+import es.diegogs.yastit.model.Table
 import es.diegogs.yastit.model.Tables
 import kotlinx.android.synthetic.main.activity_table.*
 
@@ -30,6 +33,8 @@ class TableActivity : AppCompatActivity() {
         }
     }
 
+    val REQUEST_NEW_DISH = 1
+
     private var dishes: MutableList<Dish> = mutableListOf<Dish>()
     set(value) {
         field = value
@@ -43,12 +48,15 @@ class TableActivity : AppCompatActivity() {
         }
     }
 
+    private var table: Table? = null
     private var tableIndex: Int? = 0
     set(value) {
         field = value
 
         if (value != null) {
-            dishes = Tables.getDishesFromTable(value)
+            table = Tables[value]
+
+            dishes = table?.getDishes()!!
         }
     }
 
@@ -62,21 +70,42 @@ class TableActivity : AppCompatActivity() {
 
         tableIndex = intent.getIntExtra(EXTRA_TABLE, 0)
         //dishes = Tables.getDishesFromTable(tableIndex)
-        if (dishes.size == 0) {
-            label_message_no_dishes.visibility = View.VISIBLE
-            table_dishes_list.visibility = View.GONE
-        }
-        else {
-            label_message_no_dishes.visibility = View.GONE
-            table_dishes_list.visibility = View.VISIBLE
-        }
+
+        updateViews()
 
         add_button.setOnClickListener {
             val intent = MenuActivity.intent(this, tableIndex!!)
 
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_NEW_DISH)
         }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (requestCode) {
+            REQUEST_NEW_DISH -> {
+                if (requestCode.equals(REQUEST_NEW_DISH) && resultCode == Activity.RESULT_OK) {
+
+                    val result = data?.getStringExtra(DishActivity.EXTRA_DISH_ID)
+
+                    if (result != null && !result.isEmpty()) {
+
+                        table?.addDish(Dishes.getDish(result))
+                        dishes = table?.getDishes()!!
+                        updateViews()
+                        /*this.onRestart()*/
+                    }
+                }
+            }
+        }
+    }
+
+/*    override fun onRestart() {
+        super.onRestart()
+
+        updateViews()
+    }*/
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
@@ -97,5 +126,16 @@ class TableActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    fun updateViews() {
+        if (dishes.size == 0) {
+            label_message_no_dishes.visibility = View.VISIBLE
+            table_dishes_list.visibility = View.GONE
+        }
+        else {
+            label_message_no_dishes.visibility = View.GONE
+            table_dishes_list.visibility = View.VISIBLE
+        }
     }
 }

@@ -1,6 +1,7 @@
 package es.diegogs.yastit.model
 
 import es.diegogs.yastit.R
+import java.io.Serializable
 import java.util.*
 
 enum class AllergenTypes(val allergenId: Int) {
