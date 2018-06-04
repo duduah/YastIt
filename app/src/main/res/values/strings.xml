@@ -19,5 +19,6 @@
     <string name="dish_photo_content_description">Dish photo</string>
     <string name="hint_text_variantes">Introduzca las variaciones que el cliente solicite de este plato</string>
     <string name="label_menu_item_bill">Factura</string>
+    <string name="label_bill">Cuenta de la mesa:</string>
 
 </resources>

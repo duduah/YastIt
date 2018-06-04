@@ -13,6 +13,14 @@ import es.diegogs.yastit.model.*
 import kotlinx.android.synthetic.main.activity_dish.*
 import kotlinx.android.synthetic.main.content_dish.*
 
+
+/**
+ * Esta actividad permite mostrar tres vistas del detalle de un plato:
+ *
+ * 1. Nuevo plato a agregar a una mesa. Se verá en modo edición, esto es, mostrando el campo de texto para introducir variantes y los botones de OK/CANCEL.
+ * 2. Plato ya perteneciente a una mesa. Se verá en modo edición al igual que en el caso anterior, permitiendo modiciar las variantes del plato en el campo de texto.
+ * 3. TODO: Detalle del plato. Sin más, para cuando se llame desde el menú sin que se vaya a asociar a ninguna mesa.
+ */
 class DishActivity : AppCompatActivity() {
 
     companion object {
